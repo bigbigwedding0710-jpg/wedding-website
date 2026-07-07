@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thomas & Rainkie — Our Wedding</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream:   #fdfaf5;
+  --cream2:  #f9f2e4;
+  --cream3:  #f0e0c0;
+  --blush:   #e8a5a0;
+  --blush2:  #d4756e;
+  --blush3:  #b85a53;
+  --sage:    #8aab8a;
+  --sage2:   #6b8f6b;
+  --sage3:   #4f6b4f;
+  --ink:     #4a4a4a;
+  --light:   #9a9490;
+}
+
+body {
+  background: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Navigation ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(253,250,245,0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--cream3);
+  display: flex;
+  justify-content: center;
+  gap: 0;
+}
+
+.nav-btn {
+  flex: 1;
+  max-width: 140px;
+  padding: 14px 8px;
+  border: none;
+  background: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--light);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.nav-btn.active {
+  color: var(--blush3);
+  border-bottom-color: var(--blush2);
+}
+
+/* ── Pages ── */
+.page {
+  display: none;
+  min-height: 100vh;
+  padding-top: 56px;
+}
+.page.active { display: block; }
+
+/* ── Page 1: Details ── */
+.details-hero {
+  background: linear-gradient(135deg, rgba(232,165,160,0.15), rgba(138,171,138,0.10));
+  padding: 60px 24px 48px;
+  text-align: center;
+}
+
+.hero-names {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 300;
+  color: var(--blush3);
+  line-height: 1.1;
+  letter-spacing: 1px;
+}
+
+.hero-names-cn {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  color: var(--sage2);
+  margin-top: 6px;
+  letter-spacing: 3px;
+}
+
+.hero-date {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  color: var(--blush2);
+  margin-top: 16px;
+  letter-spacing: 2px;
+}
+
+.hero-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 24px auto;
+  max-width: 200px;
+}
+.hero-divider span {
+  flex: 1;
+  height: 1px;
+  background: var(--blush);
+  opacity: 0.5;
+}
+.hero-divider i {
+  color: var(--blush);
+  font-style: normal;
+  font-size: 16px;
+}
+
+.details-grid {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  display: grid;
+  gap: 20px;
+}
+
+.detail-card {
+  background: white;
+  border-radius: 20px;
+  padding: 28px 24px;
+  border: 1px solid var(--cream3);
+  box-shadow: 0 4px 20px rgba(184,90,83,0.06);
+  text-align: center;
+}
+
+.detail-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.detail-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  color: var(--blush3);
+  margin-bottom: 4px;
+}
+
+.detail-title-cn {
+  font-size: 13px;
+  color: var(--sage3);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.detail-content {
+  font-size: 15px;
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+.detail-content-cn {
+  font-size: 13px;
+  color: var(--light);
+  line-height: 1.7;
+  margin-top: 4px;
+}
+
+/* ── Page 2: Seating ── */
+.seating-header {
+  background: linear-gradient(135deg, rgba(232,165,160,0.15), rgba(138,171,138,0.10));
+  padding: 48px 24px 36px;
+  text-align: center;
+}
+
+.page-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--blush3);
+}
+
+.page-title-cn {
+  font-size: 16px;
+  color: var(--sage3);
+  margin-top: 6px;
+  letter-spacing: 2px;
+}
+
+.search-box {
+  max-width: 400px;
+  margin: 24px auto 0;
+  position: relative;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 50px;
+  border: 1px solid var(--cream3);
+  background: white;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--ink);
+  outline: none;
+  box-shadow: 0 4px 16px rgba(184,90,83,0.08);
+}
+
+.search-box input:focus {
+  border-color: var(--blush);
+  box-shadow: 0 0 0 3px rgba(232,165,160,0.2);
+}
+
+.search-box input::placeholder { color: #c9c2b8; }
+
+.tables-grid {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.table-card {
+  background: white;
+  border-radius: 18px;
+  padding: 22px 20px;
+  border: 1px solid var(--cream3);
+  box-shadow: 0 4px 16px rgba(184,90,83,0.06);
+}
+
+.table-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  color: var(--blush3);
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--cream3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.table-name span {
+  font-size: 18px;
+}
+
+.guest-list {
+  list-style: none;
+}
+
+.guest-item {
+  padding: 6px 0;
+  font-size: 14px;
+  color: var(--ink);
+  border-bottom: 1px solid var(--cream2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.guest-item:last-child { border-bottom: none; }
+
+.guest-item::before {
+  content: '✦';
+  color: var(--blush);
+  font-size: 8px;
+  flex-shrink: 0;
+}
+
+.guest-highlight {
+  background: rgba(232,165,160,0.15);
+  border-radius: 8px;
+  padding: 6px 10px;
+  color: var(--blush3);
+  font-weight: 500;
+}
+
+.no-results {
+  text-align: center;
+  padding: 40px;
+  color: var(--light);
+  font-size: 15px;
+  display: none;
+}
+
+/* ── Page 3: Photos ── */
+.photos-header {
+  background: linear-gradient(135deg, rgba(232,165,160,0.15), rgba(138,171,138,0.10));
+  padding: 48px 24px 36px;
+  text-align: center;
+}
+
+.photos-body {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  display: grid;
+  gap: 20px;
+}
+
+.upload-card {
+  background: white;
+  border-radius: 20px;
+  padding: 28px 24px;
+  border: 1px solid var(--cream3);
+  box-shadow: 0 4px 20px rgba(184,90,83,0.06);
+  text-align: center;
+}
+
+.upload-card-icon { font-size: 36px; margin-bottom: 12px; }
+
+.upload-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  color: var(--blush3);
+  margin-bottom: 4px;
+}
+
+.upload-card-title-cn {
+  font-size: 13px;
+  color: var(--sage3);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.upload-card-desc {
+  font-size: 13px;
+  color: var(--light);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.upload-btn-main {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  border-radius: 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.btn-chrome {
+  background: var(--blush2);
+  color: white;
+  box-shadow: 0 8px 20px rgba(212,117,110,0.3);
+}
+
+.btn-safari {
+  background: var(--sage2);
+  color: white;
+  box-shadow: 0 8px 20px rgba(107,143,107,0.3);
+}
+
+.btn-chrome:active, .btn-safari:active {
+  transform: scale(0.98);
+}
+
+.upload-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.tag-chrome {
+  background: rgba(212,117,110,0.12);
+  color: var(--blush3);
+}
+
+.tag-safari {
+  background: rgba(107,143,107,0.12);
+  color: var(--sage3);
+}
+
+/* ── Footer ── */
+.site-footer {
+  text-align: center;
+  padding: 40px 24px;
+  border-top: 1px solid var(--cream3);
+}
+
+.footer-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--light);
+}
+
+/* ── Decorative circles ── */
+.decor {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+.decor-1 {
+  top: -100px; right: -100px;
+  width: 300px; height: 300px;
+  background: rgba(232,165,160,0.08);
+}
+.decor-2 {
+  bottom: -80px; left: -80px;
+  width: 250px; height: 250px;
+  background: rgba(138,171,138,0.07);
+}
+
+@media (max-width: 400px) {
+  .hero-names { font-size: 38px; }
+  .tables-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="decor decor-1"></div>
+<div class="decor decor-2"></div>
+
+<!-- ── Navigation ── -->
+<nav>
+  <button class="nav-btn active" onclick="showPage('details')">
+    Details<br><span style="font-size:10px;color:#c9c2b8">詳情</span>
+  </button>
+  <button class="nav-btn" onclick="showPage('seating')">
+    Seating<br><span style="font-size:10px;color:#c9c2b8">座位表</span>
+  </button>
+  <button class="nav-btn" onclick="showPage('photos')">
+    Photos<br><span style="font-size:10px;color:#c9c2b8">照片</span>
+  </button>
+</nav>
+
+<!-- ══════════════════════════════════
+     PAGE 1: DETAILS
+══════════════════════════════════ -->
+<div class="page active" id="page-details">
+  <div class="details-hero">
+    <p class="hero-names">Thomas<br>&amp; Rainkie</p>
+    <p class="hero-names-cn">湯瑪士 與 靈琪</p>
+    <div class="hero-divider"><span></span><i>✦</i><span></span></div>
+    <p class="hero-date">COMING SOON · 敬請期待</p>
+  </div>
+
+  <div class="details-grid">
+
+    <div class="detail-card">
+      <div class="detail-icon">📅</div>
+      <p class="detail-title">Date · 日期</p>
+      <p class="detail-content">
+        To be announced<br>
+      </p>
+      <p class="detail-content-cn">待公佈</p>
+    </div>
+
+    <div class="detail-card">
+      <div class="detail-icon">📍</div>
+      <p class="detail-title">Venue · 地點</p>
+      <p class="detail-content">
+        To be announced
+      </p>
+      <p class="detail-content-cn">待公佈</p>
+    </div>
+
+    <div class="detail-card">
+      <div class="detail-icon">🕐</div>
+      <p class="detail-title">Time · 時間</p>
+      <p class="detail-content">
+        To be announced
+      </p>
+      <p class="detail-content-cn">待公佈</p>
+    </div>
+
+    <div class="detail-card">
+      <div class="detail-icon">👗</div>
+      <p class="detail-title">Dress Code · 服裝要求</p>
+      <p class="detail-content">
+        To be announced
+      </p>
+      <p class="detail-content-cn">待公佈</p>
+    </div>
+
+  </div>
+
+  <div class="site-footer">
+    <p class="footer-text">with love · 愛你們 ✦</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     PAGE 2: SEATING
+══════════════════════════════════ -->
+<div class="page" id="page-seating">
+  <div class="seating-header">
+    <p class="page-title">Seating Plan</p>
+    <p class="page-title-cn">座位安排</p>
+// ── Guest search ──
+function searchGuests() {
+  var query = document.getElementById('searchInput').value.toLowerCase().trim();
+  var tables = document.querySelectorAll('.table-card');
+  var anyVisible = false;
+
+  tables.forEach(function(table) {
+    var guests = table.querySelectorAll('.guest-item');
+    var tableMatch = false;
+
+    guests.forEach(function(guest) {
+      var name = guest.textContent.toLowerCase();
+      guest.classList.remove('guest-highlight');
+
+      if (query === '') {
+        guest.style.display = '';
+        tableMatch = true;
+      } else if (name.includes(query)) {
+        guest.style.display = '';
+        guest.classList.add('guest-highlight');
+        tableMatch = true;
+      } else {
+        guest.style.display = 'none';
+      }
+    });
+
+    if (query === '' || tableMatch) {
+      table.style.display = '';
+      anyVisible = true;
+    } else {
+      table.style.display = 'none';
+    }
+  });
+
+  document.getElementById('noResults').style.display =
+    anyVisible ? 'none' : 'block';
+}
+  </div>
+
+  <div class="tables-grid" id="tablesGrid">
+
+    <div class="table-card" data-table="table1">
+      <p class="table-name"><span>🌸</span> Table 1</p>
+      <ul class="guest-list">
+        <li class="guest-item">Guest Name Here</li>
+        <li class="guest-item">Guest Name Here</li>
+        <li class="guest-item">Guest Name Here</li>
+      </ul>
+    </div>
+
+    <div class="table-card" data-table="table2">
+      <p class="table-name"><span>🌿</span> Table 2</p>
+      <ul class="guest-list">
+        <li class="guest-item">Guest Name Here</li>
+        <li class="guest-item">Guest Name Here</li>
+        <li class="guest-item">Guest Name Here</li>
+      </ul>
+    </div>
+
+    <div class="table-card" data-table="table3">
+      <p class="table-name"><span>🌹</span> Table 3</p>
+      <ul class="guest-list">
+        <li class="guest-item">Guest Name Here</li>
+        <li class="guest-item">Guest Name Here</li>
+        <li class="guest-item">Guest Name Here</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <p class="no-results" id="noResults">
+    No results found · 找不到結果 😔
+  </p>
+
+  <div class="site-footer">
+    <p class="footer-text">with love · 愛你們 ✦</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     PAGE 3: PHOTOS
+══════════════════════════════════ -->
+<div class="page" id="page-photos">
+  <div class="photos-header">
+    <p class="page-title">Share a Memory</p>
+    <p class="page-title-cn">分享美好回憶 💕</p>
+  </div>
+
+  <div class="photos-body">
+
+    <!-- Option 1: Chrome -->
+    <div class="upload-card">
+      <div class="upload-card-icon">📱</div>
+      <p class="upload-tag tag-chrome">Android · Chrome Users</p>
+      <p class="upload-card-title">Upload Photos</p>
+      <p class="upload-card-title-cn">上載照片</p>
+      <p class="upload-card-desc">
+        Best experience on Android or Chrome browser<br>
+        最佳體驗：Android或Chrome瀏覽器
+      </p>
+      <a href="https://tinyurl.com/ThomasnRainkie"
+         target="_blank"
+         class="upload-btn-main btn-chrome">
+        📷 Open Upload Page · 開啟上載頁面
+      </a>
+    </div>
+
+    <!-- Option 2: Safari/Forms -->
+    <div class="upload-card">
+      <div class="upload-card-icon">🍎</div>
+      <p class="upload-tag tag-safari">iPhone · Safari Users</p>
+      <p class="upload-card-title">Upload via Form</p>
+      <p class="upload-card-title-cn">透過表格上載</p>
+      <p class="upload-card-desc">
+        Best experience on iPhone Safari browser<br>
+        最佳體驗：iPhone Safari瀏覽器<br>
+        <small style="color:#e8a5a0">* Requires Google account sign in</small><br>
+        <small style="color:#e8a5a0">* 需要登入Google帳戶</small>
+      </p>
+      <a href="https://forms.gle/3fEpGBGWSNZMFdwa7"
+         target="_blank"
+         class="upload-btn-main btn-safari">
+        📋 Open Google Form · 開啟表格
+      </a>
+    </div>
+
+  </div>
+
+  <div class="site-footer">
+    <p class="footer-text">with love · 愛你們 ✦</p>
+  </div>
+</div>
+
+<script>
+// ── Page navigation ──
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(function(p) {
+    p.classList.remove('active');
+  });
+  document.querySelectorAll('.nav-btn').forEach(function(b) {
+    b.classList.remove('active');
+  });
+  document.getElementById('page-' + name).classList.add('active');
+  event.currentTarget.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// ── Guest search ──
+function searchGuests() {
+  var query = document.getElementById('searchInput').value.toLowerCase().trim();
+  var tables = document.querySelectorAll('.table-card');
+  var anyVisible = false;
+
+  tables.forEach(function(table) {
+    var guests = table.querySelectorAll('.guest-item');
+    var tableMatch = false;
+
+    guests.forEach(function(guest) {
+      var name = guest.textContent.toLowerCase();
+      guest.classList.remove('guest-highlight');
+
+      if (query === '') {
+        guest.style.display = '';
+        tableMatch = true;
+      } else if (name.includes(query)) {
+        guest.style.display = '';
+        guest.classList.add('guest-highlight');
+        tableMatch = true;
+      } else {
+        guest.style.display = 'none';
+      }
+    });
+
+    if (query === '' || tableMatch) {
+      table.style.display = '';
+      anyVisible = true;
+    } else {
+      table.style.display = 'none';
+    }
+  });
+
+  document.getElementById('noResults').style.display =
+    anyVisible ? 'none' : 'block';
+}
+</script>
+
+</body>
+</html>
