@@ -3,24 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rainkie & Thomas — Our Wedding</title>
+<title>吳梁聯婚 — Rainkie & Thomas</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --cream:   #fdfaf5;
-  --cream2:  #f9f2e4;
-  --cream3:  #f0e0c0;
-  --blush:   #e8a5a0;
-  --blush2:  #d4756e;
-  --blush3:  #b85a53;
-  --sage:    #8aab8a;
-  --sage2:   #6b8f6b;
-  --sage3:   #4f6b4f;
-  --ink:     #4a4a4a;
-  --light:   #9a9490;
+  --cream:  #fdfaf5;
+  --cream2: #f9f2e4;
+  --cream3: #f0e0c0;
+  --blush:  #e8a5a0;
+  --blush2: #d4756e;
+  --blush3: #b85a53;
+  --sage:   #8aab8a;
+  --sage2:  #6b8f6b;
+  --sage3:  #4f6b4f;
+  --ink:    #4a4a4a;
+  --light:  #9a9490;
 }
 
 body {
@@ -79,7 +79,6 @@ nav {
   min-height: 100vh;
   padding-top: 60px;
 }
-
 .page.active { display: block; }
 
 /* ── PAGE 1 DETAILS ── */
@@ -100,10 +99,10 @@ nav {
 
 .hero-names-cn {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
+  font-size: 26px;
   color: #6b8f6b;
   margin-top: 8px;
-  letter-spacing: 4px;
+  letter-spacing: 6px;
 }
 
 .hero-divider {
@@ -168,14 +167,14 @@ nav {
 .detail-content {
   font-size: 15px;
   color: #4a4a4a;
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
 .detail-content-cn {
   font-size: 13px;
   color: #9a9490;
-  line-height: 1.7;
-  margin-top: 4px;
+  line-height: 1.8;
+  margin-top: 6px;
 }
 
 /* ── PAGE 2 SEATING ── */
@@ -186,357 +185,4 @@ nav {
 }
 
 .page-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 40px;
-  font-weight: 300;
-  color: #b85a53;
-}
-
-.page-title-cn {
-  font-size: 15px;
-  color: #4f6b4f;
-  margin-top: 6px;
-  letter-spacing: 2px;
-}
-
-.tables-grid {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 32px 24px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
-}
-
-.table-card {
-  background: white;
-  border-radius: 18px;
-  padding: 22px 20px;
-  border: 1px solid #f0e0c0;
-  box-shadow: 0 4px 16px rgba(184,90,83,0.06);
-}
-
-.table-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 20px;
-  color: #b85a53;
-  margin-bottom: 12px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #f0e0c0;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.guest-list { list-style: none; }
-
-.guest-item {
-  padding: 7px 0;
-  font-size: 14px;
-  color: #4a4a4a;
-  border-bottom: 1px solid #f9f2e4;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.guest-item:last-child { border-bottom: none; }
-
-.guest-item::before {
-  content: '✦';
-  color: #e8a5a0;
-  font-size: 8px;
-  flex-shrink: 0;
-}
-
-/* ── PAGE 3 PHOTOS ── */
-.photos-body {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 32px 24px;
-  display: grid;
-  gap: 20px;
-}
-
-.upload-card {
-  background: white;
-  border-radius: 20px;
-  padding: 28px 24px;
-  border: 1px solid #f0e0c0;
-  box-shadow: 0 4px 20px rgba(184,90,83,0.06);
-  text-align: center;
-}
-
-.upload-card-icon { font-size: 36px; margin-bottom: 12px; }
-
-.upload-card-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
-  color: #b85a53;
-  margin-bottom: 4px;
-}
-
-.upload-card-title-cn {
-  font-size: 12px;
-  color: #4f6b4f;
-  margin-bottom: 8px;
-  letter-spacing: 1px;
-}
-
-.upload-card-desc {
-  font-size: 13px;
-  color: #9a9490;
-  line-height: 1.7;
-  margin-bottom: 20px;
-}
-
-.upload-tag {
-  display: inline-block;
-  padding: 4px 14px;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  margin-bottom: 16px;
-}
-
-.tag-chrome {
-  background: rgba(212,117,110,0.12);
-  color: #b85a53;
-}
-
-.tag-safari {
-  background: rgba(107,143,107,0.12);
-  color: #4f6b4f;
-}
-
-.upload-btn-main {
-  display: block;
-  width: 100%;
-  padding: 15px;
-  border-radius: 14px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  transition: transform 0.1s;
-  color: white;
-}
-
-.btn-chrome {
-  background: #d4756e;
-  box-shadow: 0 8px 20px rgba(212,117,110,0.3);
-}
-
-.btn-safari {
-  background: #6b8f6b;
-  box-shadow: 0 8px 20px rgba(107,143,107,0.3);
-}
-
-.upload-btn-main:active { transform: scale(0.98); }
-
-/* ── FOOTER ── */
-.site-footer {
-  text-align: center;
-  padding: 40px 24px;
-  border-top: 1px solid #f0e0c0;
-}
-
-.footer-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 15px;
-  color: #c9c2b8;
-}
-
-/* ── DECORATIVE ── */
-.decor {
-  position: fixed;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
-}
-.decor-1 {
-  top: -100px; right: -100px;
-  width: 280px; height: 280px;
-  background: rgba(232,165,160,0.08);
-}
-.decor-2 {
-  bottom: -80px; left: -80px;
-  width: 240px; height: 240px;
-  background: rgba(138,171,138,0.07);
-}
-
-@media (max-width: 400px) {
-  .hero-names { font-size: 38px; }
-  .tables-grid { grid-template-columns: 1fr; }
-}
-</style>
-</head>
-<body>
-
-<div class="decor decor-1"></div>
-<div class="decor decor-2"></div>
-
-<!-- NAV -->
-<nav>
-  <button class="nav-btn active" onclick="showPage('details', this)">
-    Details
-    <span class="nav-btn-cn">詳情</span>
-  </button>
-  <button class="nav-btn" onclick="showPage('seating', this)">
-    Seating
-    <span class="nav-btn-cn">座位表</span>
-  </button>
-  <button class="nav-btn" onclick="showPage('photos', this)">
-    Photos
-    <span class="nav-btn-cn">照片</span>
-  </button>
-</nav>
-
-<!-- PAGE 1: DETAILS -->
-<div class="page active" id="page-details">
-  <div class="details-hero">
-    <p class="hero-names">Rainkie &amp; Thomas</p>
-    <p class="hero-names-cn">吳梁聯婚</p>
-    <div class="hero-divider"><span></span><i>✦</i><span></span></div>
-    <p class="hero-date">COMING SOON · 敬請期待</p>
-  </div>
-
-  <div class="details-grid">
-    <div class="detail-card">
-      <div class="detail-icon">📅</div>
-      <p class="detail-title">Date · 日期</p>
-      <p class="detail-title-cn">婚禮日期</p>
-      <p class="detail-content">To be announced</p>
-      <p class="detail-content-cn">待公佈</p>
-    </div>
-
-    <div class="detail-card">
-      <div class="detail-icon">📍</div>
-      <p class="detail-title">Venue · 地點</p>
-      <p class="detail-title-cn">婚禮場地</p>
-      <p class="detail-content">To be announced</p>
-      <p class="detail-content-cn">待公佈</p>
-    </div>
-
-    <div class="detail-card">
-      <div class="detail-icon">🕐</div>
-      <p class="detail-title">Time · 時間</p>
-      <p class="detail-title-cn">婚禮時間</p>
-      <p class="detail-content">To be announced</p>
-      <p class="detail-content-cn">待公佈</p>
-    </div>
-  </div>
-
-  <div class="site-footer">
-    <p class="footer-text">with love ✦</p>
-  </div>
-</div>
-
-<!-- PAGE 2: SEATING -->
-<div class="page" id="page-seating">
-  <div class="page-header">
-    <p class="page-title">Seating Plan</p>
-    <p class="page-title-cn">座位安排</p>
-  </div>
-
-  <div class="tables-grid">
-    <div class="table-card">
-      <p class="table-name">🌸 Table 1</p>
-      <ul class="guest-list">
-        <li class="guest-item">Guest Name Here</li>
-        <li class="guest-item">Guest Name Here</li>
-        <li class="guest-item">Guest Name Here</li>
-      </ul>
-    </div>
-
-    <div class="table-card">
-      <p class="table-name">🌿 Table 2</p>
-      <ul class="guest-list">
-        <li class="guest-item">Guest Name Here</li>
-        <li class="guest-item">Guest Name Here</li>
-        <li class="guest-item">Guest Name Here</li>
-      </ul>
-    </div>
-
-    <div class="table-card">
-      <p class="table-name">🌹 Table 3</p>
-      <ul class="guest-list">
-        <li class="guest-item">Guest Name Here</li>
-        <li class="guest-item">Guest Name Here</li>
-        <li class="guest-item">Guest Name Here</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="site-footer">
-    <p class="footer-text">with love · 愛你們 ✦</p>
-  </div>
-</div>
-
-<!-- PAGE 3: PHOTOS -->
-<div class="page" id="page-photos">
-  <div class="page-header">
-    <p class="page-title">Share a Memory</p>
-    <p class="page-title-cn">分享美好回憶 💕</p>
-  </div>
-
-  <div class="photos-body">
-    <div class="upload-card">
-      <div class="upload-card-icon">📱</div>
-      <p class="upload-tag tag-chrome">Android · Chrome Users</p>
-      <p class="upload-card-title">Upload Photos</p>
-      <p class="upload-card-title-cn">上載照片</p>
-      <p class="upload-card-desc">
-        Best on Android or Chrome browser<br>
-        最佳體驗：Android或Chrome瀏覽器
-      </p>
-      <a href="https://tinyurl.com/ThomasnRainkie"
-         target="_blank"
-         class="upload-btn-main btn-chrome">
-        📷 Upload Photos · 上載照片
-      </a>
-    </div>
-
-    <div class="upload-card">
-      <div class="upload-card-icon">🍎</div>
-      <p class="upload-tag tag-safari">iPhone · Safari Users</p>
-      <p class="upload-card-title">Upload via Form</p>
-      <p class="upload-card-title-cn">透過表格上載</p>
-      <p class="upload-card-desc">
-        Best on iPhone Safari browser<br>
-        最佳體驗：iPhone Safari瀏覽器<br>
-        <small style="color:#e8a5a0">* Requires Google account · 需要Google帳戶</small>
-      </p>
-      <a href="https://forms.gle/3fEpGBGWSNZMFdwa7"
-         target="_blank"
-         class="upload-btn-main btn-safari">
-        📋 Open Form · 開啟表格
-      </a>
-    </div>
-  </div>
-
-  <div class="site-footer">
-    <p class="footer-text">with love✦</p>
-  </div>
-</div>
-
-<script>
-function showPage(name, btn) {
-  document.querySelectorAll('.page').forEach(function(p) {
-    p.classList.remove('active');
-  });
-  document.querySelectorAll('.nav-btn').forEach(function(b) {
-    b.classList.remove('active');
-  });
-  document.getElementById('page-' + name).classList.add('active');
-  btn.classList.add('active');
-  window.scrollTo(0, 0);
-}
-</script>
-
-</body>
-</html>
+  font-family:
