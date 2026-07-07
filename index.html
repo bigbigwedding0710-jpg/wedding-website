@@ -185,4 +185,465 @@ nav {
 }
 
 .page-title {
-  font-family:
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px;
+  font-weight: 300;
+  color: #b85a53;
+}
+
+.page-title-cn {
+  font-size: 15px;
+  color: #4f6b4f;
+  margin-top: 6px;
+  letter-spacing: 2px;
+}
+
+.loading-msg {
+  text-align: center;
+  padding: 60px 24px;
+  color: #9a9490;
+  font-size: 14px;
+}
+
+.loading-spinner {
+  font-size: 28px;
+  display: block;
+  margin-bottom: 12px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.tables-grid {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.table-card {
+  background: white;
+  border-radius: 18px;
+  padding: 22px 20px;
+  border: 1px solid #f0e0c0;
+  box-shadow: 0 4px 16px rgba(184,90,83,0.06);
+}
+
+.table-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  color: #b85a53;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0e0c0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.guest-list { list-style: none; }
+
+.guest-item {
+  padding: 7px 0;
+  font-size: 14px;
+  color: #4a4a4a;
+  border-bottom: 1px solid #f9f2e4;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.guest-item:last-child { border-bottom: none; }
+
+.guest-item::before {
+  content: '✦';
+  color: #e8a5a0;
+  font-size: 8px;
+  flex-shrink: 0;
+}
+
+/* ── PAGE 3 PHOTOS ── */
+.photos-body {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  display: grid;
+  gap: 20px;
+}
+
+.upload-card {
+  background: white;
+  border-radius: 20px;
+  padding: 28px 24px;
+  border: 1px solid #f0e0c0;
+  box-shadow: 0 4px 20px rgba(184,90,83,0.06);
+  text-align: center;
+}
+
+.upload-card-icon { font-size: 36px; margin-bottom: 12px; }
+
+.upload-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  color: #b85a53;
+  margin-bottom: 4px;
+}
+
+.upload-card-title-cn {
+  font-size: 12px;
+  color: #4f6b4f;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.upload-card-desc {
+  font-size: 13px;
+  color: #9a9490;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.upload-limits {
+  background: var(--cream2);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.upload-limits p {
+  font-size: 12px;
+  color: #6b6560;
+  line-height: 1.8;
+}
+
+.upload-limits p::before {
+  content: '✦ ';
+  color: #e8a5a0;
+  font-size: 8px;
+}
+
+.upload-tag {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.tag-chrome {
+  background: rgba(212,117,110,0.12);
+  color: #b85a53;
+}
+
+.tag-safari {
+  background: rgba(107,143,107,0.12);
+  color: #4f6b4f;
+}
+
+.upload-btn-main {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  border-radius: 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.1s;
+  color: white;
+}
+
+.btn-chrome {
+  background: #d4756e;
+  box-shadow: 0 8px 20px rgba(212,117,110,0.3);
+}
+
+.btn-safari {
+  background: #6b8f6b;
+  box-shadow: 0 8px 20px rgba(107,143,107,0.3);
+}
+
+.upload-btn-main:active { transform: scale(0.98); }
+
+/* ── FOOTER ── */
+.site-footer {
+  text-align: center;
+  padding: 40px 24px;
+  border-top: 1px solid #f0e0c0;
+}
+
+.footer-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: #c9c2b8;
+}
+
+/* ── DECORATIVE ── */
+.decor {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+.decor-1 {
+  top: -100px; right: -100px;
+  width: 280px; height: 280px;
+  background: rgba(232,165,160,0.08);
+}
+.decor-2 {
+  bottom: -80px; left: -80px;
+  width: 240px; height: 240px;
+  background: rgba(138,171,138,0.07);
+}
+
+@media (max-width: 400px) {
+  .hero-names { font-size: 38px; }
+  .tables-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="decor decor-1"></div>
+<div class="decor decor-2"></div>
+
+<!-- NAV -->
+<nav>
+  <button class="nav-btn active" onclick="showPage('details', this)">
+    Details
+    <span class="nav-btn-cn">詳情</span>
+  </button>
+  <button class="nav-btn" onclick="showPage('seating', this)">
+    Seating
+    <span class="nav-btn-cn">座位表</span>
+  </button>
+  <button class="nav-btn" onclick="showPage('photos', this)">
+    Photos
+    <span class="nav-btn-cn">照片</span>
+  </button>
+</nav>
+
+<!-- PAGE 1: DETAILS -->
+<div class="page active" id="page-details">
+  <div class="details-hero">
+    <p class="hero-names">Rainkie &amp; Thomas</p>
+    <p class="hero-names-cn">吳梁聯婚</p>
+    <div class="hero-divider"><span></span><i>✦</i><span></span></div>
+    <p class="hero-date">2026 · 敬請期待</p>
+  </div>
+
+  <div class="details-grid">
+
+    <div class="detail-card">
+      <div class="detail-icon">📅</div>
+      <p class="detail-title">Date · 日期</p>
+      <p class="detail-title-cn">婚禮日期</p>
+      <p class="detail-content">To be confirmed<br>Saturday</p>
+      <p class="detail-content-cn">待確認<br>星期六</p>
+    </div>
+
+    <div class="detail-card">
+      <div class="detail-icon">🕐</div>
+      <p class="detail-title">Time · 時間</p>
+      <p class="detail-title-cn">婚禮時間</p>
+      <p class="detail-content">To be confirmed</p>
+      <p class="detail-content-cn">待確認</p>
+    </div>
+
+    <div class="detail-card">
+      <div class="detail-icon">📍</div>
+      <p class="detail-title">Venue · 地點</p>
+      <p class="detail-title-cn">婚禮場地</p>
+      <p class="detail-content">To be confirmed</p>
+      <p class="detail-content-cn">待確認</p>
+    </div>
+
+    <div class="detail-card">
+      <div class="detail-icon">🚗</div>
+      <p class="detail-title">Transportation · 交通</p>
+      <p class="detail-title-cn">前往方法</p>
+      <p class="detail-content">To be confirmed</p>
+      <p class="detail-content-cn">待確認</p>
+    </div>
+
+  </div>
+
+  <div class="site-footer">
+    <p class="footer-text">with love · 愛你們 ✦</p>
+  </div>
+</div>
+
+<!-- PAGE 2: SEATING -->
+<div class="page" id="page-seating">
+  <div class="page-header">
+    <p class="page-title">Seating Plan</p>
+    <p class="page-title-cn">座位安排</p>
+  </div>
+
+  <div id="loadingMsg" class="loading-msg">
+    <span class="loading-spinner">🌸</span>
+    Loading seating plan · 載入座位表中...
+  </div>
+
+  <div class="tables-grid" id="tablesGrid"></div>
+
+  <div class="site-footer">
+    <p class="footer-text">with love · 愛你們 ✦</p>
+  </div>
+</div>
+
+<!-- PAGE 3: PHOTOS -->
+<div class="page" id="page-photos">
+  <div class="page-header">
+    <p class="page-title">Share a Memory</p>
+    <p class="page-title-cn">分享美好回憶 💕</p>
+  </div>
+
+  <div class="photos-body">
+
+    <!-- Chrome option -->
+    <div class="upload-card">
+      <div class="upload-card-icon">📱</div>
+      <p class="upload-tag tag-chrome">Android · Chrome Users</p>
+      <p class="upload-card-title">Upload Photos</p>
+      <p class="upload-card-title-cn">上載照片</p>
+      <p class="upload-card-desc">
+        Best on Android or Chrome browser<br>
+        最佳體驗：Android或Chrome瀏覽器
+      </p>
+      <div class="upload-limits">
+        <p>Max 20MB per photo · 每張最大20MB</p>
+        <p>Multiple photos at once · 可同時上載多張</p>
+        <p>JPG, PNG, HEIC supported · 支援JPG、PNG、HEIC</p>
+      </div>
+      <a href="https://tinyurl.com/ThomasnRainkie"
+         target="_blank"
+         class="upload-btn-main btn-chrome">
+        📷 Upload Photos · 上載照片
+      </a>
+    </div>
+
+    <!-- Safari option -->
+    <div class="upload-card">
+      <div class="upload-card-icon">🍎</div>
+      <p class="upload-tag tag-safari">iPhone · Safari Users</p>
+      <p class="upload-card-title">Upload via Form</p>
+      <p class="upload-card-title-cn">透過表格上載</p>
+      <p class="upload-card-desc">
+        Best on iPhone Safari browser<br>
+        最佳體驗：iPhone Safari瀏覽器
+      </p>
+      <div class="upload-limits">
+        <p>Max 10MB per photo · 每張最大10MB</p>
+        <p>Max 10 photos at once · 最多同時上載10張</p>
+        <p>Requires Google account · 需要Google帳戶</p>
+      </div>
+      <a href="https://forms.gle/3fEpGBGWSNZMFdwa7"
+         target="_blank"
+         class="upload-btn-main btn-safari">
+        📋 Open Form · 開啟表格
+      </a>
+    </div>
+
+  </div>
+
+  <div class="site-footer">
+    <p class="footer-text">with love · 愛你們 ✦</p>
+  </div>
+</div>
+
+<script>
+// ── Navigation ──
+function showPage(name, btn) {
+  document.querySelectorAll('.page').forEach(function(p) {
+    p.classList.remove('active');
+  });
+  document.querySelectorAll('.nav-btn').forEach(function(b) {
+    b.classList.remove('active');
+  });
+  document.getElementById('page-' + name).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// ── Load seating plan from Google Sheets ──
+var SHEET_ID = '17gXPaRBPSR3sHf9KqdsnDz-JXvPLVG4wHs1RJloLzEI';
+var SHEET_URL = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:json';
+
+var TABLE_ICONS = ['🌸','🌿','🌹','🌺','🍃','🌷','✿','🌼','🌻','🍀'];
+
+function loadSeating() {
+  fetch(SHEET_URL)
+    .then(function(res) { return res.text(); })
+    .then(function(text) {
+      // Strip Google's wrapper to get clean JSON
+      var json = JSON.parse(text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1));
+      var rows = json.table.rows;
+
+      // Group guests by table
+      var tables = {};
+      var tableOrder = [];
+
+      rows.forEach(function(row) {
+        if (!row.c || !row.c[0] || !row.c[0].v) return;
+        var tableName = String(row.c[0].v).trim();
+        var guestName = row.c[1] ? String(row.c[1].v || '').trim() : '';
+        if (!tableName || tableName === 'Table') return; // skip header
+
+        if (!tables[tableName]) {
+          tables[tableName] = [];
+          tableOrder.push(tableName);
+        }
+        if (guestName) {
+          tables[tableName].push(guestName);
+        }
+      });
+
+      // Render tables
+      var grid = document.getElementById('tablesGrid');
+      grid.innerHTML = '';
+
+      tableOrder.forEach(function(tableName, index) {
+        var icon = TABLE_ICONS[index % TABLE_ICONS.length];
+        var guests = tables[tableName];
+
+        var card = document.createElement('div');
+        card.className = 'table-card';
+
+        var guestItems = guests.map(function(name) {
+          return '<li class="guest-item">' + name + '</li>';
+        }).join('');
+
+        card.innerHTML =
+          '<p class="table-name">' + icon + ' ' + tableName + '</p>' +
+          '<ul class="guest-list">' + guestItems + '</ul>';
+
+        grid.appendChild(card);
+      });
+
+      document.getElementById('loadingMsg').style.display = 'none';
+    })
+    .catch(function() {
+      document.getElementById('loadingMsg').innerHTML =
+        '⚠️ Could not load seating plan · 無法載入座位表<br>' +
+        '<small style="color:#c9c2b8">Please check your internet connection · 請檢查網絡連線</small>';
+    });
+}
+
+// Load seating when page opens
+loadSeating();
+</script>
+
+</body>
+</html>
