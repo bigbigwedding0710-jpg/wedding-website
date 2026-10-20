@@ -406,7 +406,35 @@ nav {
   width: 240px; height: 240px;
   background: rgba(138,171,138,0.07);
 }
-
+.seat-filters { max-width: 700px; margin: 0 auto; padding: 20px 24px 0; }
+.seat-filters input {
+  width: 100%; padding: 13px 18px; border-radius: 50px;
+  border: 1px solid #f0e0c0; background: white;
+  font-family: 'DM Sans', sans-serif; font-size: 16px; color: #4a4a4a;
+  outline: none; -webkit-appearance: none;
+  box-shadow: 0 4px 16px rgba(184,90,83,0.08);
+}
+.seat-filters input:focus { border-color: #e8a5a0; }
+.chip-row { display: flex; gap: 8px; margin-top: 12px; }
+.chip-row.wrap { flex-wrap: wrap; }
+.schip {
+  flex: 1; padding: 10px 8px; border-radius: 20px;
+  border: 1px solid #f0e0c0; background: white;
+  font-family: inherit; font-size: 13px; color: #9a9490;
+  cursor: pointer; -webkit-appearance: none;
+}
+.chip-row.wrap .schip { flex: none; padding: 8px 14px; font-size: 12px; }
+.schip.on {
+  border-color: #d4756e; background: rgba(212,117,110,0.10);
+  color: #b85a53; font-weight: 500;
+}
+.seat-count { font-size: 12px; color: #9a9490; margin-top: 12px; text-align: center; }
+.guest-group { margin-left: auto; font-size: 11px; color: #9a9490; }
+.guest-hit {
+  background: rgba(232,165,160,0.15); border-radius: 8px;
+  padding: 6px 10px; color: #b85a53; font-weight: 500;
+}
+.no-results { text-align: center; padding: 40px; color: #9a9490; font-size: 15px; display: none; }
 @media (max-width: 400px) {
   .hero-names { font-size: 38px; }
   .tables-grid { grid-template-columns: 1fr; }
@@ -491,12 +519,26 @@ nav {
     <p class="page-title-cn">座位安排</p>
   </div>
 
+  <div class="seat-filters">
+    <input type="search" id="seatSearch"
+      placeholder="Search name or table · 搜尋姓名或枱號"
+      oninput="renderSeating()">
+    <div class="chip-row" id="sideChips">
+      <button class="schip on" data-side="all" onclick="setSide('all')">All 全部</button>
+      <button class="schip" data-side="groom" onclick="setSide('groom')">🤵 Groom 男家</button>
+      <button class="schip" data-side="bride" onclick="setSide('bride')">👰 Bride 女家</button>
+    </div>
+    <div class="chip-row wrap" id="groupChips"></div>
+    <p class="seat-count" id="seatCount"></p>
+  </div>
+
   <div id="loadingMsg" class="loading-msg">
     <span class="loading-spinner">🌸</span>
     Loading seating plan · 載入座位表中...
   </div>
 
   <div class="tables-grid" id="tablesGrid"></div>
+  <p class="no-results" id="seatEmpty">No results · 找不到結果</p>
 
   <div class="site-footer">
     <p class="footer-text">with love · 愛你們 ✦</p>
@@ -578,70 +620,138 @@ function showPage(name, btn) {
 }
 
 // ── Load seating plan from Google Sheets ──
+// ── Seating plan from Google Sheets ──
 var SHEET_ID = '17gXPaRBPSR3sHf9KqdsnDz-JXvPLVG4wHs1RJloLzEI';
 var SHEET_URL = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:json';
-
 var TABLE_ICONS = ['🌸','🌿','🌹','🌺','🍃','🌷','✿','🌼','🌻','🍀'];
+
+var allGuests = [];
+var tableOrder = [];
+var fSide = 'all';
+var fGroup = 'all';
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, function (c) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+  });
+}
+
+function cellText(row, i) {
+  return row.c && row.c[i] && row.c[i].v != null ? String(row.c[i].v).trim() : '';
+}
+
+function sideOf(v) {
+  v = String(v || '').toLowerCase();
+  if (v.indexOf('男') > -1 || v.indexOf('groom') > -1) return 'groom';
+  if (v.indexOf('女') > -1 || v.indexOf('bride') > -1) return 'bride';
+  return '';
+}
 
 function loadSeating() {
   fetch(SHEET_URL)
-    .then(function(res) { return res.text(); })
-    .then(function(text) {
-      // Strip Google's wrapper to get clean JSON
+    .then(function (res) { return res.text(); })
+    .then(function (text) {
       var json = JSON.parse(text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1));
-      var rows = json.table.rows;
-
-      // Group guests by table
-      var tables = {};
-      var tableOrder = [];
-
-      rows.forEach(function(row) {
-        if (!row.c || !row.c[0] || !row.c[0].v) return;
-        var tableName = String(row.c[0].v).trim();
-        var guestName = row.c[1] ? String(row.c[1].v || '').trim() : '';
-        if (!tableName || tableName === 'Table') return; // skip header
-
-        if (!tables[tableName]) {
-          tables[tableName] = [];
-          tableOrder.push(tableName);
-        }
-        if (guestName) {
-          tables[tableName].push(guestName);
-        }
+      allGuests = [];
+      tableOrder = [];
+      json.table.rows.forEach(function (row) {
+        var table = cellText(row, 0);
+        var name = cellText(row, 1);
+        if (!table || !name || table === 'Table') return;
+        if (tableOrder.indexOf(table) < 0) tableOrder.push(table);
+        allGuests.push({
+          table: table,
+          name: name,
+          side: sideOf(cellText(row, 5)),
+          group: cellText(row, 6)
+        });
       });
-
-      // Render tables
-      var grid = document.getElementById('tablesGrid');
-      grid.innerHTML = '';
-
-      tableOrder.forEach(function(tableName, index) {
-        var icon = TABLE_ICONS[index % TABLE_ICONS.length];
-        var guests = tables[tableName];
-
-        var card = document.createElement('div');
-        card.className = 'table-card';
-
-        var guestItems = guests.map(function(name) {
-          return '<li class="guest-item">' + name + '</li>';
-        }).join('');
-
-        card.innerHTML =
-          '<p class="table-name">' + icon + ' ' + tableName + '</p>' +
-          '<ul class="guest-list">' + guestItems + '</ul>';
-
-        grid.appendChild(card);
-      });
-
       document.getElementById('loadingMsg').style.display = 'none';
+      renderSeating();
     })
-    .catch(function() {
+    .catch(function () {
       document.getElementById('loadingMsg').innerHTML =
         '⚠️ Could not load seating plan · 無法載入座位表<br>' +
         '<small style="color:#c9c2b8">Please check your internet connection · 請檢查網絡連線</small>';
     });
 }
 
-// Load seating when page opens
+function setSide(side) {
+  fSide = side;
+  fGroup = 'all';
+  document.querySelectorAll('#sideChips .schip').forEach(function (b) {
+    b.classList.toggle('on', b.getAttribute('data-side') === side);
+  });
+  renderSeating();
+}
+
+document.getElementById('groupChips').addEventListener('click', function (e) {
+  var b = e.target.closest('.schip');
+  if (!b) return;
+  fGroup = b.getAttribute('data-group');
+  renderSeating();
+});
+
+function renderSeating() {
+  var q = document.getElementById('seatSearch').value.trim().toLowerCase();
+
+  // Build group chips from the selected side
+  var groups = [];
+  allGuests.forEach(function (g) {
+    if (fSide !== 'all' && g.side !== fSide) return;
+    if (g.group && groups.indexOf(g.group) < 0) groups.push(g.group);
+  });
+  if (fGroup !== 'all' && groups.indexOf(fGroup) < 0) fGroup = 'all';
+
+  var gc = document.getElementById('groupChips');
+  if (groups.length) {
+    var h = '<button class="schip' + (fGroup === 'all' ? ' on' : '') +
+            '" data-group="all">全部組別 All</button>';
+    groups.forEach(function (g) {
+      h += '<button class="schip' + (fGroup === g ? ' on' : '') +
+           '" data-group="' + esc(g) + '">' + esc(g) + '</button>';
+    });
+    gc.innerHTML = h;
+  } else {
+    gc.innerHTML = '';
+  }
+
+  // Filter guests
+  var byTable = {};
+  var shown = 0;
+  allGuests.forEach(function (g) {
+    if (fSide !== 'all' && g.side !== fSide) return;
+    if (fGroup !== 'all' && g.group !== fGroup) return;
+    if (q && g.name.toLowerCase().indexOf(q) < 0 && g.table.toLowerCase().indexOf(q) < 0) return;
+    if (!byTable[g.table]) byTable[g.table] = [];
+    byTable[g.table].push(g);
+    shown++;
+  });
+
+  // Render tables
+  var grid = document.getElementById('tablesGrid');
+  grid.innerHTML = '';
+  tableOrder.forEach(function (t, idx) {
+    if (!byTable[t]) return;
+    var icon = TABLE_ICONS[idx % TABLE_ICONS.length];
+    var items = byTable[t].map(function (g) {
+      var hit = q && g.name.toLowerCase().indexOf(q) > -1;
+      return '<li class="guest-item' + (hit ? ' guest-hit' : '') + '">' + esc(g.name) +
+             (g.group && fGroup === 'all' ? '<span class="guest-group">' + esc(g.group) + '</span>' : '') +
+             '</li>';
+    }).join('');
+    var card = document.createElement('div');
+    card.className = 'table-card';
+    card.innerHTML = '<p class="table-name">' + icon + ' ' + esc(t) + '</p>' +
+                     '<ul class="guest-list">' + items + '</ul>';
+    grid.appendChild(card);
+  });
+
+  document.getElementById('seatCount').textContent =
+    '顯示 ' + shown + ' 位 · Showing ' + shown + ' guests';
+  document.getElementById('seatEmpty').style.display = shown ? 'none' : 'block';
+}
+
 loadSeating();
 </script>
 
